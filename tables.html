@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B1118">
+  <title>Table Reservation | Smart Restaurant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+    (() => {
+      let theme = "dark";
+      try {
+        const saved = localStorage.getItem("sr_theme_preference");
+        if (saved === "light" || saved === "dark") theme = saved;
+      } catch (_) { /* Storage can be unavailable in restricted browser contexts. */ }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css"><script src="core.js" defer></script><script src="qa.js" defer></script><script src="script.js" defer></script>
+</head>
+<body data-page="tables">
+  <nav class="navbar" aria-label="Main navigation"><a class="logo" href="index.html">Smart Restaurant</a><button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="menu.html">Menu</a><a class="active" href="tables.html">Reserve</a><a href="order-tracking.html">Track Order</a><a href="cart.html" class="cart-link">Cart <span id="cart-badge" class="badge">0</span></a><a href="admin.html">Admin</a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="false" title="Switch to light mode"><span class="theme-toggle-icon" aria-hidden="true">☀</span><span class="theme-toggle-label">Light mode</span></button></div></nav>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <main id="main-content" tabindex="-1" class="page-width page-main">
+    <div class="breadcrumb"><a href="index.html">Home</a> › Table Reservation</div>
+    <section class="page-intro"><span class="eyebrow">A SEAT THAT FITS YOUR NEEDS</span><h1>Reserve a Table</h1><p>Choose your date, time and party size. Request wheelchair-accessible seating when required.</p></section>
+    <section class="reservation-layout" id="reservation-form">
+      <div class="panel reservation-panel">
+        <h2>Reservation Details</h2>
+        <form id="reservation-form-element">
+          <div class="form-grid">
+            <label class="form-field"><span>Full name *</span><input id="reservation-name" type="text" maxlength="60" autocomplete="name" required placeholder="Your name"></label>
+            <label class="form-field"><span>Phone number *</span><input id="reservation-phone" type="tel" inputmode="numeric" maxlength="10" required placeholder="10-digit mobile number"></label>
+            <label class="form-field"><span>Date & time *</span><input id="reservation-datetime" type="datetime-local" required></label>
+            <label class="form-field"><span>Number of guests *</span><input id="reservation-guests" type="number" min="1" max="20" value="2" required></label>
+          </div>
+          <label class="checkbox-card"><input id="reservation-accessible" type="checkbox"><span><strong>Wheelchair-accessible seating required</strong><small>Only tables marked accessible will be considered.</small></span></label>
+          <label class="form-field"><span>Preferred area (optional)</span><select id="reservation-area"><option value="Any">Any available area</option><option value="Near Entrance">Near entrance</option><option value="Window">Window</option><option value="Quiet Area">Quiet area</option></select></label>
+          <p class="form-hint">Reservations are simulated in this browser prototype. Please confirm actual accessibility arrangements with restaurant staff.</p>
+          <button class="btn btn-primary btn-full" type="submit">Find & Reserve Suitable Table</button>
+        </form>
+        <div id="reservation-result" class="inline-result" aria-live="polite"></div>
+      </div>
+      <aside class="reservation-side panel"><h2>Accessibility Information</h2><div class="accessibility-icon">♿</div><p>Tables marked with the accessibility badge are configured as wheelchair-accessible in this demo.</p><div class="legend-row"><span class="access-badge">♿ Accessible</span><span class="status-pill status-available">Available</span></div><div class="legend-row"><span class="status-pill status-occupied">Occupied</span><span class="status-pill status-reserved">Reserved</span></div><p class="form-hint">The filter checks table data only; it does not certify entrances, paths or washrooms.</p></aside>
+    </section>
+    <section class="table-list-section"><div class="section-heading"><div><span class="eyebrow">SEATING OVERVIEW</span><h2>Restaurant Tables</h2><p>Review capacity and accessibility before booking.</p></div></div>
+      <div class="table-filters"><label class="checkbox-line"><input id="tables-accessible-only" type="checkbox"> Show accessible tables only</label><label class="select-field"><span>Availability for</span><input id="tables-view-datetime" type="datetime-local"></label><label class="select-field"><span>Guests</span><input id="tables-view-guests" type="number" min="1" max="20" value="2"></label></div>
+      <div id="tables-container" aria-live="polite" class="table-grid"></div>
+    </section>
+    <section class="table-list-section"><div class="section-heading"><div><span class="eyebrow">YOUR BOOKINGS</span><h2>Recent Reservations</h2></div></div><div id="customer-reservations" aria-live="polite" class="records-list"></div></section>
+  </main>
+  <footer class="footer"><p>© 2026 Smart Restaurant · Reservation prototype</p></footer><div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

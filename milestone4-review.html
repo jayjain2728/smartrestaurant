@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B1118">
+  <meta name="description" content="Final milestone test and quality review for the Smart Restaurant prototype.">
+  <title>Final Milestone Quality Review | Smart Restaurant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+    (() => {
+      let theme = "dark";
+      try {
+        const saved = localStorage.getItem("sr_theme_preference");
+        if (saved === "light" || saved === "dark") theme = saved;
+      } catch (_) { /* Storage can be unavailable in restricted browser contexts. */ }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css"><script src="core.js" defer></script><script src="qa.js" defer></script><script src="script.js" defer></script>
+</head>
+<body data-page="milestone4-review">
+  <nav class="navbar" aria-label="Main navigation"><a class="logo" href="index.html">Smart Restaurant</a><button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="menu.html">Menu</a><a href="tables.html">Reserve</a><a href="order-tracking.html">Track Order</a><a href="cart.html" class="cart-link">Cart <span id="cart-badge" class="badge">0</span></a><a href="admin.html">Admin</a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="false" title="Switch to light mode"><span class="theme-toggle-icon" aria-hidden="true">☀</span><span class="theme-toggle-label">Light mode</span></button></div></nav>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <main id="main-content" tabindex="-1" class="page-width page-main">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="admin.html">Admin</a> › Final Milestone Quality Review</div>
+    <section class="page-intro"><span class="eyebrow">FINAL MILESTONE · TESTING & ACCEPTANCE</span><h1>Comprehensive Quality Review</h1><p>Run isolated edge-case checks for reservations, orders, cart validation, menu/table inputs, analytics, nutritional data, printable receipts and in-app order-ready notices. Test records are temporary sample data and do not change customer records.</p></section>
+    <section class="panel review-controls" aria-labelledby="test-suite-title"><div><h2 id="test-suite-title">Automated business-rule suite</h2><p>Includes invalid inputs, overlapping bookings, table status, quantity limits, order transitions and empty-data handling.</p></div><button id="run-m4-tests" class="btn btn-primary" type="button">Run all final milestone tests</button></section>
+    <div id="m4-review-summary" class="review-summary" role="status" aria-live="polite">Tests have not been run yet. Select “Run all final milestone tests” to start.</div>
+    <div id="m4-review-results" class="review-results" role="list" aria-label="Test results"></div>
+    <section class="review-note panel"><h2>Integration and browser verification</h2><p>The separate browser suite exercises checkout-to-tracking, reservation conflict handling, admin menu changes, customer-menu availability, cross-page status updates and responsive breakpoints. Run it with the instructions in <code>tests/README.md</code>. A static prototype cannot guarantee atomic multi-device bookings; a server-side database and transaction/unique constraint are required for production.</p><p><a class="text-link" href="../tests/README.md">Open the test execution guide</a></p></section>
+    <section class="quality-grid" aria-label="Quality focus areas"><article class="panel"><h2>Input validation</h2><p>Names, Indian mobile numbers, guest counts, menu prices, table capacity and stored cart quantities.</p></article><article class="panel"><h2>Data integrity</h2><p>Reservation overlap, cancellation behavior, unique references and historical order-price snapshots.</p></article><article class="panel"><h2>Accessibility</h2><p>Skip navigation, keyboard focus, live feedback, accessible labels, reduced-motion support and responsive navigation.</p></article></section>
+  </main>
+  <footer class="footer"><p>© 2026 Smart Restaurant · Final milestone quality review</p></footer><div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

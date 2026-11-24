@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B1118">
+  <title>Mid-term Review | Smart Restaurant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+    (() => {
+      let theme = "dark";
+      try {
+        const saved = localStorage.getItem("sr_theme_preference");
+        if (saved === "light" || saved === "dark") theme = saved;
+      } catch (_) { /* Storage can be unavailable in restricted browser contexts. */ }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css"><script src="core.js" defer></script><script src="qa.js" defer></script><script src="script.js" defer></script>
+</head>
+<body data-page="review">
+  <nav class="navbar" aria-label="Main navigation"><a class="logo" href="index.html">Smart Restaurant</a><button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="menu.html">Menu</a><a href="tables.html">Reserve</a><a href="order-tracking.html">Track Order</a><a href="cart.html" class="cart-link">Cart <span id="cart-badge" class="badge">0</span></a><a href="admin.html">Admin</a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="false" title="Switch to light mode"><span class="theme-toggle-icon" aria-hidden="true">☀</span><span class="theme-toggle-label">Light mode</span></button></div></nav>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <main id="main-content" tabindex="-1" class="page-width page-main">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="admin.html">Admin</a> › Mid-term Review</div>
+    <section class="page-intro"><span class="eyebrow">MILESTONE 3 VALIDATION</span><h1>Mid-term Review</h1><p>Run logic checks using isolated sample data. These tests do not alter actual menu, order or reservation records.</p></section>
+    <div class="review-controls panel"><div><h2>Automated Business-Logic Checks</h2><p>Checks accessibility matching, capacity, reservation conflicts, order transitions, menu availability and analytics.</p></div><button id="run-review-tests" class="btn btn-primary" type="button">Run All Tests</button></div>
+    <div id="review-summary" class="review-summary" aria-live="polite">Tests have not been run yet.</div>
+    <div id="review-results" class="review-results"></div>
+    <section class="panel review-note"><h2>What this review does not prove</h2><p>These automated checks validate selected JavaScript business rules using sample records. They do not replace full browser testing, multi-device testing, security testing, or verification against a real restaurant's operations.</p></section>
+  </main>
+  <footer class="footer"><p>© 2026 Smart Restaurant · Milestone 3</p></footer><div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

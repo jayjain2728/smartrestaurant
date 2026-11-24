@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B1118">
+  <title>Track Order | Smart Restaurant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+    (() => {
+      let theme = "dark";
+      try {
+        const saved = localStorage.getItem("sr_theme_preference");
+        if (saved === "light" || saved === "dark") theme = saved;
+      } catch (_) { /* Storage can be unavailable in restricted browser contexts. */ }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css"><script src="core.js" defer></script><script src="qa.js" defer></script><script src="script.js" defer></script>
+</head>
+<body data-page="tracking">
+  <nav class="navbar" aria-label="Main navigation"><a class="logo" href="index.html">Smart Restaurant</a><button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="menu.html">Menu</a><a href="tables.html">Reserve</a><a class="active" href="order-tracking.html">Track Order</a><a href="cart.html" class="cart-link">Cart <span id="cart-badge" class="badge">0</span></a><a href="admin.html">Admin</a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="false" title="Switch to light mode"><span class="theme-toggle-icon" aria-hidden="true">☀</span><span class="theme-toggle-label">Light mode</span></button></div></nav>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <main id="main-content" tabindex="-1" class="page-width page-main narrow-main">
+    <div class="breadcrumb"><a href="index.html">Home</a> › Track Order</div>
+    <section class="page-intro"><span class="eyebrow">FOLLOW YOUR ORDER</span><h1>Order Tracking</h1><p>Enter your order ID or view your most recent order.</p></section>
+    <section class="panel tracking-search"><form id="tracking-search-form" class="tracking-search-form"><label class="form-field"><span>Order ID</span><input id="tracking-order-id" type="text" placeholder="Example: ORD1001"></label><button class="btn btn-primary" type="submit">Find Order</button></form></section>
+    <div id="tracking-container" aria-live="polite"></div>
+  </main>
+  <footer class="footer"><p>© 2026 Smart Restaurant</p></footer><div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

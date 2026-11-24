@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B1118">
+  <title>Your Cart | Smart Restaurant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+    (() => {
+      let theme = "dark";
+      try {
+        const saved = localStorage.getItem("sr_theme_preference");
+        if (saved === "light" || saved === "dark") theme = saved;
+      } catch (_) { /* Storage can be unavailable in restricted browser contexts. */ }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css"><script src="core.js" defer></script><script src="qa.js" defer></script><script src="script.js" defer></script>
+</head>
+<body data-page="cart">
+  <nav class="navbar" aria-label="Main navigation"><a class="logo" href="index.html">Smart Restaurant</a><button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="menu.html">Menu</a><a href="tables.html">Reserve</a><a href="order-tracking.html">Track Order</a><a class="active cart-link" href="cart.html">Cart <span id="cart-badge" class="badge">0</span></a><a href="admin.html">Admin</a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="false" title="Switch to light mode"><span class="theme-toggle-icon" aria-hidden="true">☀</span><span class="theme-toggle-label">Light mode</span></button></div></nav>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <main id="main-content" tabindex="-1" class="page-width page-main narrow-main">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="menu.html">Menu</a> › Cart</div>
+    <section class="page-intro"><span class="eyebrow">ALMOST THERE</span><h1>Your Cart</h1><p>Check your items and enter the details needed to place your order.</p></section>
+    <div id="cart-container"></div>
+    <section id="order-summary" class="checkout-layout" hidden>
+      <div class="panel checkout-panel">
+        <h2>Order Details</h2>
+        <div class="form-grid">
+          <label class="form-field"><span>Customer name *</span><input id="customer-name" type="text" maxlength="60" autocomplete="name" placeholder="Enter your name" required></label>
+          <label class="form-field"><span>Phone number *</span><input id="customer-phone" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10-digit mobile number" required></label>
+        </div>
+        <div class="form-field"><span>Order type *</span><div class="toggle-group" id="order-type-options"><button class="toggle-btn active" type="button" data-type="Dine-in">🍽️ Dine-in</button><button class="toggle-btn" type="button" data-type="Takeaway">🥡 Takeaway</button><button class="toggle-btn" type="button" data-type="Home Delivery">🛵 Home Delivery</button></div></div>
+        <label class="form-field delivery-field" id="delivery-address-field" hidden><span>Delivery address *</span><textarea id="delivery-address" rows="3" maxlength="250" placeholder="House/hostel, street, area and landmark"></textarea></label>
+        <p class="form-hint">Your phone number is stored with your order for restaurant reference. No online payment is collected.</p>
+      </div>
+      <aside class="panel bill-panel"><h2>Order Summary</h2><div class="summary-row"><span>Subtotal</span><strong id="subtotal">₹0</strong></div><div class="summary-row"><span>Tax (5%)</span><strong id="tax">₹0</strong></div><div class="summary-row total-row"><span>Total</span><strong id="grand-total">₹0</strong></div><button id="place-order-button" class="btn btn-primary btn-full" type="button">Confirm Order</button><a class="text-link centered-link" href="menu.html">Continue shopping</a></aside>
+    </section>
+  </main>
+  <footer class="footer"><p>© 2026 Smart Restaurant · Demo checkout only</p></footer><div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
